@@ -1,0 +1,65 @@
+﻿@model IEnumerable<oe.Models.Student>
+
+@{
+    ViewData["Title"] = "Student Registration";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="button btn-primary btn-outline-primary" asp-action="Create">Register Student</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StuId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StuName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StuPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StuImage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StuId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StuName)
+            </td>
+            <td data-title="Password">
+                @Html.DisplayFor(modelItem => item.StuPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StuImage)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StuId }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StuId }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StuId }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
